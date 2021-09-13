@@ -126,35 +126,39 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOCALE_PATH = [
+    os.path.join(BASE_DIR, 'locale')
+]
+
 
 LOGGING = {
     'version': 1,
     'disable_existing_logger': False,
     'loggers': {
         'django': {
-            'handlers': ['console', 'warns', 'errors', 'togenerallog',],
+            'handlers': ['console',  'warns', 'errors', 'general',],
             'level': 'DEBUG',
         },
-        'django.request': {
-            'handlers': ['toerrorslog', 'mail_admins'],
-            'level': 'ERROR',
-        },
-        'django.server': {
-            'handlers': ['toerrorslog', 'mail_admins'],
-            'level': 'ERROR',
-        },
-        'django.template': {
-            'handlers': ['toerrorslog', ],
-            'level': 'ERROR',
-        },
-        'django.db_backends': {
-            'handlers': ['toerrorslog', ],
-            'level': 'ERROR',
-        },
-        'django.security': {
-            'handlers': ['tosecuritylog'],
-            'level': 'INFO',
-        },
+        # 'django.request': {
+        #     'handlers': ['toerrorslog', 'mail_admins'],
+        #     'level': 'ERROR',
+        # },
+        # 'django.server': {
+        #     'handlers': ['toerrorslog', 'mail_admins'],
+        #     'level': 'ERROR',
+        # },
+        # 'django.template': {
+        #     'handlers': ['toerrorslog', ],
+        #     'level': 'ERROR',
+        # },
+        # 'django.db_backends': {
+        #     'handlers': ['toerrorslog', ],
+        #     'level': 'ERROR',
+        # },
+        # 'django.security': {
+        #     'handlers': ['tosecuritylog'],
+        #     'level': 'INFO',
+        # },
     },
     'handlers': {
         'console': {
@@ -174,31 +178,31 @@ LOGGING = {
             'formatter': 'errformat',
             'filters': ['require_debug_true'],
         },
-        'togenerallog': {
-            'level': 'INFO',
-            'class': 'loggingFileHandler',
-            'filename': 'general.log',
-            'formatter': 'genlog',
-            'filters': ['require_debug_false'],
-        },
-        'toerrorslog': {
-            'level': 'ERROR',
-            'class': 'loggingFileHandler',
-            'filename': 'errors.log',
-            'formatter': 'errformat',
-        },
-        'tosecuritylog': {
-            'level': 'INFO',
-            'class': 'loggingFileHandler',
-            'filename': 'security.log',
-            'formatter': 'genlog',
-        },
-        'mail_admins': {
-            'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler',
-            'formatter': 'errformat1',
-            'filters': ['require_debug_false'],
-        },
+        # 'general': {
+        #      'level': 'INFO',
+        #      'class': 'loggingFileHandler',
+        #      'filename': 'general.log',
+        #      'formatter': 'genlog',
+        #      'filters': ['require_debug_false'],
+        # },
+        # 'toerrorslog': {
+        #     'level': 'ERROR',
+        #     'class': 'loggingFileHandler',
+        #     'filename': 'errors.log',
+        #     'formatter': 'errformat',
+        # },
+        # 'tosecuritylog': {
+        #     'level': 'INFO',
+        #     'class': 'loggingFileHandler',
+        #     'filename': 'security.log',
+        #     'formatter': 'genlog',
+        # },
+        # 'mail_admins': {
+        #     'level': 'ERROR',
+        #     'class': 'django.utils.log.AdminEmailHandler',
+        #     'formatter': 'errformat1',
+        #     'filters': ['require_debug_false'],
+        # },
     },
     'formatters': {
         'myformatter': {
@@ -221,11 +225,11 @@ LOGGING = {
             'datetime': '%Y.%m.%d %H:%M:%S',
             'style': '{',
         },
-        'errformat1': {
-            'format': '{asctime} {levelname} {message} {pathname}',
-            'datetime': '%Y.%m.%d %H:%M:%S',
-            'style': '{',
-        }
+        # 'errformat1': {
+        #     'format': '{asctime} {levelname} {message} {pathname}',
+        #     'datetime': '%Y.%m.%d %H:%M:%S',
+        #     'style': '{',
+        # }
     },
     'filters': {
         'require_debug_false': {
